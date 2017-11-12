@@ -2,8 +2,16 @@
 
 ENVIRONMENT=${ENVIRONMENT:-dev}
 
-/omnicore-0.2.0/bin/omnicored \
-    -datadir=/data \
+USER=${BITCOIN_USER:-codegik}
+PASS=${BITCOIN_PASS:-codegik}
+CONFIG=/bitcoin.$ENVIRONMENT.conf
+
+sed -i -- "s/user/$USER/g" "$CONFIG"
+sed -i -- "s/pass/$PASS/g" "$CONFIG"
+
+/etc/init.d/rabbitmq-server start
+
+bitcoind \
     -conf=/bitcoin.$ENVIRONMENT.conf \
     --printtoconsole \
     -txindex \
