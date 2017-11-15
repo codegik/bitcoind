@@ -1,5 +1,6 @@
 # Bitcoind
-This docker image start the Bitcoind blockchain.
+This docker image start the Bitcoind blockchain and the RabbitMQ.
+This stack is composed of a Bitcoin Blockchain node and an instance of RabbitMQ. The purpose is to capture the events in the wallet and submit them to the queue.
 
 ### Running in development mode
 ```
@@ -12,11 +13,11 @@ $ docker run -it --name bitcoind -p 8332:8332 -p 8333:8333 -p 15672:15672 -p 567
 ```
 
 ### Default options
-The container start with default options:
-- testnet=1
+The blockchain container start with default options:
+- regtest=1
 - server=1
 - listener=1
-- rpcuser=user
-- rpcpassword=pass
+- rpcuser=codegik
+- rpcpassword=codegik
 - rpcallowip=0.0.0.0/0
 - datadir=/data
