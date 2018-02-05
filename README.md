@@ -13,6 +13,11 @@ $ docker run -it --name bitcoind -p 18332:18332 -p 18333:18333 -p 15672:15672 -p
 $ docker run -it --name bitcoind -p 8332:8332 -p 8333:8333 -p 15672:15672 -p 5672:5672 -v ~/.bitcoin:/data -e ENVIRONMENT=prod codegik/bitcoind
 ```
 
+### Changing the RPC user name and password
+```
+$ docker run -it --name bitcoind -p 8332:8332 -p 8333:8333 -p 15672:15672 -p 5672:5672 -v ~/.bitcoin:/data -e ENVIRONMENT=prod -e BITCOIN_USER=otheruser -e BITCOIN_PASS=othersecret codegik/bitcoind
+```
+
 ### Default options
 The blockchain container start with default options:
 - regtest=1
